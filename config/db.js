@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const config = require("../config");
 
 module.exports = async function() {
-  console.log(`${config.PORT}`.green);
   const db = mongoose.connection;
   try {
     db.on("connected", function() {

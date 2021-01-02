@@ -1,3 +1,3 @@
-// exports.asyncHandler = require("./asyncHandler");
+exports.asyncHandler = require("./asyncHandler");
 exports.errorHandler = require("./errorHandler");
-// exports.auth = require("./auth");
+exports.auth = require("./auth");

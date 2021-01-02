@@ -14,7 +14,7 @@ const app = express();
 
 connectDB();
 
-const { auth, users, posts } = require("./routes");
+// const { auth, users, posts } = require("./routes");
 
 // Body parser
 app.use(express.json());
