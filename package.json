@@ -4,7 +4,8 @@
   "description": "backend from ego project ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "author": "victory asokomeh",
   "license": "MIT",
@@ -23,7 +24,10 @@
       "pre-commit": "lint-staged"
     },
     "lint-staged": {
-      "*.js": ["./node_modules/.bin/eslint — fix", "git add"]
+      "*.js": [
+        "./node_modules/.bin/eslint — fix",
+        "git add"
+      ]
     }
   },
   "devDependencies": {
@@ -33,8 +37,13 @@
     "eslint-config-node": "^4.0.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-node": "^11.0.0",
+    "husky": "^4.3.6",
+    "lint-staged": ">=10",
     "nodemon": "^2.0.2",
-    "prettier": "^1.19.1",
-    "lint-staged": "^9.5.0"
+    "prettier": "^1.19.1"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
