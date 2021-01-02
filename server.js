@@ -24,6 +24,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+console.log("test")
 // Mount routers
 app.use("/api/v1/auth", auth);
 
