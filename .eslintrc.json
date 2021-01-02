@@ -13,5 +13,14 @@
         "ecmaVersion": 11
     },
     "rules": {
+        "indent": ["warn", 2],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "no-console": 2,
+        "no-func-assign": 1,
+        "no-invalid-regexp": 1,
+        "no-unreachable": 1,
+        "default-case": 1
     }
 }
