@@ -4,7 +4,8 @@
   "description": "backend from ego project ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "author": "victory asokomeh",
   "license": "MIT",
