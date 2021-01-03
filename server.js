@@ -2,23 +2,22 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/.env" });
 
-const config = require("./config");
 const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan");
 const colors = require("colors");
+
+const config = require("./config");
 const connectDB = require("./config/db");
 const { errorHandler } = require("./middleware");
+const { auth } = require("./routes");
 
 const app = express();
 
 connectDB();
 
-// const { auth, users, posts } = require("./routes");
-
 // Body parser
 app.use(express.json());
-
 app.use(cors());
 
 // Logger
@@ -27,7 +26,7 @@ if (config.ENV === "development") {
 }
 
 // Mount routers
-// app.use("/api/v1/auth", auth);
+app.use("/api/v1/auth", auth);
 
 app.use(errorHandler);
 
