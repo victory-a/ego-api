@@ -1,2 +1,2 @@
-// exports.User = require("./User");
-// exports.Transaction = require("./Transaction");
+exports.User = require("./User");
+exports.Transaction = require("./Transaction");

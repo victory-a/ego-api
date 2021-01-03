@@ -33,6 +33,17 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
+/* Middleware to encrypt pin when as before every save event where pin 
+field is modified */
+UserSchema.pre("save", async function(next) {
+  if (!this.isModified("pin")) {
+    next();
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.pin = await bcrypt.hash(this.pin, salt);
+});
+
 // Checks provided pin against encrypted version in DB
 UserSchema.methods.verifyPin = async function(enteredPin) {
   const verified = await bcrypt.compare(enteredPin, this.pin);
