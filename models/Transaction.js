@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const TransactionSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
     amount: {
       type: Number,
       required: [true, "Amount is required"]
@@ -22,7 +27,7 @@ const TransactionSchema = new mongoose.Schema(
         type: String,
         match: [/^[0-9]{10}$/, "Please Provide a valid account number"]
       },
-      bankCode: { type: String, match: [/^[1,4]{0,4}$/] },
+      bankCode: { type: String, match: [/^[0-9]{0,4}$/, "Please provide a valid bankcode"] },
       subscriber: {
         type: String,
         enum: ["DSTV", "GOTV", "KWESE", "MTN", "GLO", "AIRTEL", "9MOBILE"]
@@ -32,6 +37,10 @@ const TransactionSchema = new mongoose.Schema(
         type: String,
         match: [/^0[789][01][0-9]{8}$/, "Please provide a valid mobile number"]
       }
+    },
+    remark: {
+      type: String,
+      maxlength: [256, "Remark cannot exceed 256 characters"]
     }
   },
   {
