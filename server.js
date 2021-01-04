@@ -10,7 +10,7 @@ const colors = require("colors");
 const config = require("./config");
 const connectDB = require("./config/db");
 const { errorHandler } = require("./middleware");
-const { auth, user } = require("./routes");
+const { auth, user, data } = require("./routes");
 
 const app = express();
 
@@ -28,7 +28,7 @@ if (config.ENV === "development") {
 // Mount routers
 app.use("/api/v1/auth", auth);
 app.use("/api/v1/users", user);
-// app.use("/api/v1/data", data);
+app.use("/api/v1/data", data);
 
 app.use(errorHandler);
 

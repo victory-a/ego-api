@@ -1,7 +1,11 @@
-// const express = require("express");
-// const { getBeneficiaries } = require("../controllers/data");
-// const { protect } = require("../middleware/index").auth;
+const express = require("express");
+const router = express.Router();
 
-// const router = express.Router();
+const { fetchBanks, gotvPlans, dstvPlans, kwesePlans } = require("../controllers/data");
 
-// module.exports = router;
+router.get("/banks", fetchBanks);
+router.get("/gotv", gotvPlans);
+router.get("/dstv", dstvPlans);
+router.get("/kwese", kwesePlans);
+
+module.exports = router;
