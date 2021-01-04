@@ -1,4 +1,3 @@
-const ErrorResponse = require("../utils/errorResponse");
 const { asyncHandler } = require("../middleware");
 const { gotv, dstv, kwese, banks } = require("../data");
 
