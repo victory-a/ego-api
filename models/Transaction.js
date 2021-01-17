@@ -36,11 +36,20 @@ const TransactionSchema = new mongoose.Schema(
       mobile: {
         type: String,
         match: [/^0[789][01][0-9]{8}$/, "Please provide a valid mobile number"]
+      },
+      plan: { type: String, maxlength: [256, "should not exceed 256 characters"] },
+      customerID: {
+        type: String,
+        maxlength: [4, "should not exceed 4 characters"]
+      },
+      paymentCode: {
+        type: String,
+        maxlength: [8, "should not exceed 8 characters"]
+      },
+      remark: {
+        type: String,
+        maxlength: [256, "Remark cannot exceed 256 characters"]
       }
-    },
-    remark: {
-      type: String,
-      maxlength: [256, "Remark cannot exceed 256 characters"]
     }
   },
   {

@@ -87,7 +87,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 });
 
 // CURRENT USER
-exports.currentUser = asyncHandler(async (req, res, next) => {
+exports.currentUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id);
 
   res.status(200).json({

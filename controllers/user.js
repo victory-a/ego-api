@@ -4,8 +4,8 @@ const { Beneficiary, Transaction } = require("../models");
 const computeBalance = require("../utils/calculateBalance");
 
 // GETBENEFICIARIES
-exports.getBeneficiaries = asyncHandler(async (req, res, next) => {
-  const beneficiaries = await Beneficiary.find({ user: req.params.userId });
+exports.getBeneficiaries = asyncHandler(async (req, res) => {
+  const beneficiaries = await Beneficiary.find({ user: req.user.id });
 
   if (!beneficiaries) {
     return res.status(200).json({
@@ -33,8 +33,8 @@ exports.deleteBeneficiary = asyncHandler(async (req, res, next) => {
 });
 
 // GET TRANSACTIONS
-exports.getTransactions = asyncHandler(async (req, res, next) => {
-  const transactions = await Transaction.find({ user: req.params.userId });
+exports.getTransactions = asyncHandler(async (req, res) => {
+  const transactions = await Transaction.find({ user: req.user.id });
 
   if (!transactions) {
     return res.status(200).json({
@@ -50,8 +50,8 @@ exports.getTransactions = asyncHandler(async (req, res, next) => {
 });
 
 // CALCULATE BALANCE
-exports.getBalance = asyncHandler(async (req, res, next) => {
-  const transactions = await Transaction.find({ user: req.params.userId });
+exports.getBalance = asyncHandler(async (req, res) => {
+  const transactions = await Transaction.find({ user: req.user.id });
 
   const balance = computeBalance(transactions);
 
