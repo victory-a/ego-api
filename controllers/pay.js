@@ -99,7 +99,7 @@ exports.transferMobile = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse("Insufficient Funds", 400));
     }
 
-    recipients.forEach(async recipient => {
+    for (const recipient of recipients) {
       const { amount, mobile, remark } = recipient;
       const transaction = await Transaction.create({
         user: id,
@@ -110,8 +110,7 @@ exports.transferMobile = asyncHandler(async (req, res, next) => {
       });
 
       completed.push(transaction);
-      // console.log(completed);
-    });
+    }
 
     return res.status(200).json({
       success: true,
