@@ -34,7 +34,7 @@ exports.deleteBeneficiary = asyncHandler(async (req, res, next) => {
 
 // GET TRANSACTIONS
 exports.getTransactions = asyncHandler(async (req, res) => {
-  const transactions = await Transaction.find({ user: req.user.id });
+  const transactions = await Transaction.find({ user: req.user.id }).sort({ createdAt: "desc" });
 
   if (!transactions) {
     return res.status(200).json({
